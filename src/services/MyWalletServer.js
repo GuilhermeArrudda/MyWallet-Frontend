@@ -1,11 +1,16 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5001"
+const BASE_URL = "http://localhost:5000"
 
-function sendLoginRequest (body){
+function sendSignInRequest (body){
     return axios.post(`${BASE_URL}/sign-in`, body);
 };
 
+function sendSignUpRequest (body){
+    return axios.post(`${BASE_URL}/sign-up`, body)
+}
+
 export {
-    sendLoginRequest
+    sendSignInRequest,
+    sendSignUpRequest
 };

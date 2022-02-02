@@ -2,7 +2,7 @@ import UserContext from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { EnterButton, GenericForm, GenericInput, Logo, Page, TextButton, StyledLink } from "./GenericStyles/styledComponents";
-import { sendLoginRequest } from "../services/MyWalletServer";
+import { sendSignInRequest } from "../services/MyWalletServer";
 
 export default function SignInPage() {
     const [email, setEmail] = useState('');
@@ -11,14 +11,14 @@ export default function SignInPage() {
     const { setUserData } = useContext(UserContext);
     let navigate = useNavigate();
 
-    function login(e){
+    function signIn(e){
         setIsLoading(true);
         e.preventDefault();
         const body = {
             email,
             password
         };
-        sendLoginRequest(body)
+        sendSignInRequest(body)
             .then(response => {
                 setIsLoading(false);
                 setUserData(response.data);
@@ -31,17 +31,17 @@ export default function SignInPage() {
                     return;
                 }
                 if(error.response.status === 500){
-                    alert("Erro do servidor");
+                    alert("Erro do servidor, tente novamente em alguns instantes.");
                     return;
                 }
-                alert("Ocorreu um erro inesperado");
+                alert("Ocorreu um erro inesperado!");
             });
     };
 
     return (
         <Page>
             <Logo>MyWallet</Logo>
-            <GenericForm onSubmit={login}>
+            <GenericForm onSubmit={signIn}>
                 <GenericInput
                     placeholder="E-mail"
                     type="email"
@@ -60,7 +60,7 @@ export default function SignInPage() {
                 />
                 <EnterButton type="submit" disabled={isLoading}>Entrar</EnterButton>
             </GenericForm>
-            <StyledLink to={isLoading ? "" : "/sign-up"}>
+            <StyledLink to={isLoading ? "/sign-in" : "/sign-up"}>
                 <TextButton>Primeira vez? Cadastre-se!</TextButton>
             </StyledLink>
         </Page>
