@@ -84,6 +84,26 @@ const StyledLink = styled(Link)`
     }
 `;
 
+const Header = styled.header`
+    height: 78px;
+    width: 85vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 31px;
+    div{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 80%;
+    };
+`;
+
+const Value = styled.div`
+    color: ${props => props.value > 0? "#03AC00" : "#C70000"}
+`;
+
 
 export {
     Page,
@@ -92,5 +112,7 @@ export {
     GenericInput,
     EnterButton,
     TextButton,
-    StyledLink
+    StyledLink,
+    Header,
+    Value
 }

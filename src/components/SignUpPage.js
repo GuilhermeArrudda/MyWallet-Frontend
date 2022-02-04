@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router";
+import UserContext from "../contexts/UserContext";
 import { sendSignUpRequest } from "../services/MyWalletServer";
 import { EnterButton, GenericForm, GenericInput, Logo, Page, StyledLink, TextButton } from "./GenericStyles/styledComponents";
 
@@ -9,7 +10,15 @@ export default function SignUpPage() {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const { userData } = useContext(UserContext)
     let navigate = useNavigate();
+
+    useEffect(() => {
+        if(userData) {
+            navigate("/");
+        };
+        // eslint-disable-next-line
+    }, [userData]);
 
     function signUp(e) {
         setIsLoading(true);
@@ -26,6 +35,10 @@ export default function SignUpPage() {
             })
             .catch(error => {
                 setIsLoading(false);
+                if(!error.response) {
+                    alert("servidor offline");
+                    return;
+                };
                 if(error.response.status === 409) {
                     alert("E-mail já está em uso, escolha um diferente.");
                     return;
@@ -80,7 +93,7 @@ export default function SignUpPage() {
                 />
                 <EnterButton type="submit" disabled={isLoading}>Cadastrar</EnterButton>
             </GenericForm>
-            <StyledLink to={isLoading ? "/sign-up" : "/"}>
+            <StyledLink to={isLoading ? "/sign-up" : "/sign-in"}>
                 <TextButton>Já tem uma conta? Entre agora!</TextButton>
             </StyledLink>
         </Page>

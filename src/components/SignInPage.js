@@ -1,6 +1,6 @@
 import UserContext from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EnterButton, GenericForm, GenericInput, Logo, Page, TextButton, StyledLink } from "./GenericStyles/styledComponents";
 import { sendSignInRequest } from "../services/MyWalletServer";
 
@@ -8,8 +8,15 @@ export default function SignInPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const { setUserData } = useContext(UserContext);
+    const { userData, setUserData } = useContext(UserContext);
     let navigate = useNavigate();
+
+    useEffect(() => {
+        if(userData) {
+            navigate("/");
+        };
+        // eslint-disable-next-line
+    }, [userData]);
 
     function signIn(e){
         setIsLoading(true);
@@ -26,14 +33,19 @@ export default function SignInPage() {
                 navigate("/");
             })
             .catch(error => {
-                if(error.response.status === 404){
+                setIsLoading(false);
+                if(!error.response){
+                    alert("servidor offline");
+                    return;
+                };
+                if(error.response.status === 401){
                     alert("Email ou senha incorretos");
                     return;
-                }
+                };
                 if(error.response.status === 500){
                     alert("Erro do servidor, tente novamente em alguns instantes.");
                     return;
-                }
+                };
                 alert("Ocorreu um erro inesperado!");
             });
     };
