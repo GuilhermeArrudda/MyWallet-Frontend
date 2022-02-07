@@ -26,9 +26,14 @@ function getBankOperationsRequest (token) {
     return axios.get(`${BASE_URL}/homepage`, generateConfig(token));
 };
 
+function postBankOperationsRequest (body, token) {
+    return axios.post(`${BASE_URL}/homepage`, body, generateConfig(token));
+};
+
 export {
     sendSignInRequest,
     sendSignUpRequest,
     sendLogoutRequest,
-    getBankOperationsRequest
+    getBankOperationsRequest,
+    postBankOperationsRequest
 };

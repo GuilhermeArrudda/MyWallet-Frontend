@@ -4,6 +4,7 @@ import "./assets/reset.css"
 import HomePage from "./components/HomePage";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
+import NewBankOperationPage from "./components/NewBankOperationPage";
 import UserContext from "./contexts/UserContext";
 
 export default function App() {
@@ -23,9 +24,10 @@ export default function App() {
         <UserContext.Provider value={{userData, setUserData}}>
             <BrowserRouter>
                 <Routes>
-                    <Route path="sign-in" element={<SignInPage/>}></Route>
                     <Route path="/sign-up" element={<SignUpPage/>}></Route>
+                    <Route path="sign-in" element={<SignInPage/>}></Route>
                     <Route path="/" element={<HomePage/>}></Route>
+                    <Route path="/new/:type" element={<NewBankOperationPage/>}></Route>
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

@@ -5,7 +5,8 @@ import { sendLogoutRequest, getBankOperationsRequest } from "../services/MyWalle
 import { Header, Page, Value } from "./GenericStyles/styledComponents";
 import styled from "styled-components";
 import { LogOutOutline } from "react-ionicons";
-import BankOperations from "./bankOperations.js";
+import BankOperations from "./BankOperations.js";
+import NewBankOperationButton from "./NewBankOperationButton";
 
 export default function HomePage() {
     const [ bankOperations, setBankOperations ] = useState([]);
@@ -49,8 +50,7 @@ export default function HomePage() {
     };
 
     if (!userData) {
-        <Page></Page>
-        return;
+        return <Page></Page>
     };
 
     return (
@@ -81,12 +81,11 @@ export default function HomePage() {
             </BankStatement>
             <Total>
                 <p>Saldo</p>
-                <Value value={total}>
-                    {total > 0 ? (total/100).toFixed(2) : (-total/100).toFixed(2)}
-                </Value>
+                <Value value={total}>{total > 0? (total/100).toFixed(2) : (-total/100).toFixed(2)}</Value>
             </Total>
             <Footer>
-                
+                <NewBankOperationButton type="entrada"/>
+                <NewBankOperationButton type="saída"/>
             </Footer>
         </Page>
     );
