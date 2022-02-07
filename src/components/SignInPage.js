@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { EnterButton, GenericForm, GenericInput, Logo, Page, TextButton, StyledLink } from "./GenericStyles/styledComponents";
 import { sendSignInRequest } from "../services/MyWalletServer";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function SignInPage() {
     const [email, setEmail] = useState('');
@@ -70,7 +71,9 @@ export default function SignInPage() {
                     required
                     disabled={isLoading}
                 />
-                <EnterButton type="submit" disabled={isLoading}>Entrar</EnterButton>
+                <EnterButton type="submit" disabled={isLoading}>
+                {!isLoading ? "Entrar" : <ThreeDots color="#FFF" height={50} width={80} />}
+                </EnterButton>
             </GenericForm>
             <StyledLink to={isLoading ? "/sign-in" : "/sign-up"}>
                 <TextButton>Primeira vez? Cadastre-se!</TextButton>

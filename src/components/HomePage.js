@@ -27,6 +27,7 @@ export default function HomePage() {
         if (bankOperations.length) {
             const reducer = (p, c) => p + c
             setTotal(bankOperations.map(e => e.value).reduce(reducer))
+            
         }
     }, [bankOperations])
 

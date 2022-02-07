@@ -68,6 +68,9 @@ const EnterButton = styled.button`
     font-size: 20px;
     line-height: 23px;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:disabled{
         opacity: 0.7;
     }

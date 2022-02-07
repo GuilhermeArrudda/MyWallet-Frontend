@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import { useNavigate, useParams } from "react-router";
 import UserContext from "../contexts/UserContext";
 import { postBankOperationsRequest } from "../services/MyWalletServer";
@@ -63,7 +64,7 @@ export default function NewBankOperationPage (){
                     disabled={isLoading}
                     />
                     <EnterButton type="submit" disabled={isLoading}>
-                        Salvar {type}
+                    {!isLoading ? `Salvar ${type}` : <ThreeDots color="#FFF" height={50} width={80} />}
                     </EnterButton>
             </GenericForm>
         </Page>

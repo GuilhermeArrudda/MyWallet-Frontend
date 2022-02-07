@@ -30,10 +30,15 @@ function postBankOperationsRequest (body, token) {
     return axios.post(`${BASE_URL}/homepage`, body, generateConfig(token));
 };
 
+function deleteBankOperationRequest (id, token) {
+    return axios.delete(`${BASE_URL}/homepage/${id}`, generateConfig(token))
+}
+
 export {
     sendSignInRequest,
     sendSignUpRequest,
     sendLogoutRequest,
     getBankOperationsRequest,
-    postBankOperationsRequest
+    postBankOperationsRequest,
+    deleteBankOperationRequest
 };
