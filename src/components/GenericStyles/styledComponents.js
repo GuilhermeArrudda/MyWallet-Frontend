@@ -101,7 +101,7 @@ const Header = styled.header`
 `;
 
 const Value = styled.div`
-    color: ${props => props.value > 0? "#03AC00" : "#C70000"}
+    color: ${props => props.value > 0 ? "#03AC00" : "#C70000"}
 `;
 
 

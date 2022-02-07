@@ -24,8 +24,9 @@ export default function HomePage() {
     }, [userData]);
 
     useEffect(() => {
-        if (bankOperations.lenght) {
-            setTotal(bankOperations.map(e => e.value).reduce((p, c) => p + c))
+        if (bankOperations.length) {
+            const reducer = (p, c) => p + c
+            setTotal(bankOperations.map(e => e.value).reduce(reducer))
         }
     }, [bankOperations])
 

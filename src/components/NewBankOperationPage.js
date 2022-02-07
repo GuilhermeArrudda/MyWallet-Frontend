@@ -28,7 +28,6 @@ export default function NewBankOperationPage (){
             value: type === "entrada" ? intValue : -intValue,
             description
         };
-        console.log(body)
         postBankOperationsRequest(body, userData.token)
             .then(response => {
                 navigate("/")
