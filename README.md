@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# **MyWallet**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **About the project**
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+MyWallet is a single page application designed to be used by devices such as cell phones tablets and computers.
+
+It's created is to be a tool for managing personal finances, helping you to always be aware of your expenses and your balance.
+
+### **Built with**
+
+- [React JS](https://reactjs.org/)
+- [Node JS](https://nodejs.org/en/)
+- [MongoDB](https://mongodb.com)
 
 ### `npm start`
 
