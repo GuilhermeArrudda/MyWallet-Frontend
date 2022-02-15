@@ -1,7 +1,7 @@
 # **MyWallet**
 
 <p align="center">
-   <img width="470" src="src/assets/example.gif">
+   <img width="250" src="src/assets/example.gif">
 </p>                         
 
 ### **About the project**
