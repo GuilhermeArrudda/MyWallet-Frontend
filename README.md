@@ -12,7 +12,7 @@ It's created is to be a tool for managing personal finances, helping you to alwa
 
 - [React JS](https://reactjs.org/)
 - [Node JS](https://nodejs.org/en/)
-- [MongoDB](https://mongodb.com)
+- [MongoDB](https://mongodb.com) <img align="center" alt="Lu-NodeJS" height="40" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" />
 
 ### `npm start`
 
